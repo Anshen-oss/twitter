@@ -2,7 +2,7 @@ import Head from 'next/head';
 
 import { Sidebar, Feed, Widgets } from '../components';
 
-export default function Home({ newsResults }) {
+export default function Home({ newsResults, randomUsersResults }) {
   return (
     <div>
       <Head>
@@ -18,7 +18,7 @@ export default function Home({ newsResults }) {
           <Feed />
 
           {/* Widgets */}
-          <Widgets newsResults={newsResults.articles} />
+          <Widgets newsResults={newsResults.articles} randomUsersResults={randomUsersResults.results} />
 
           {/* Modal */}
       </main>
@@ -37,7 +37,20 @@ export async function getServerSideProps() {
     }
   }
 
+  // Who to follow section
+  const resUsers = await fetch('https://randomuser.me/api/?results=30&inc=name,login,picture');
+  const randomUsersResults = await resUsers.json();
+
+  if(!randomUsersResults) {
     return {
-      props: {newsResults}, // will be passed to the page component as props
+      notFound: true
+    }
+  }
+
+    return {
+      props: {
+        newsResults, // will be passed to the page component as props
+        randomUsersResults
+      },
     }
 }
