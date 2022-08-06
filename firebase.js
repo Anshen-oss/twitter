@@ -9,11 +9,11 @@ import { getStorage} from 'firebase/storage';
 // Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_FIREBASE_API_KEY,
-  authDomain: "twitter-v1-bf97d.firebaseapp.com",
-  projectId: "twitter-v1-bf97d",
-  storageBucket: "twitter-v1-bf97d.appspot.com",
-  messagingSenderId: "632910781157",
-  appId: "1:632910781157:web:86f6406b84e5184be1920c"
+  authDomain: "twitter-v2-5739c.firebaseapp.com",
+  projectId: "twitter-v2-5739c",
+  storageBucket: "twitter-v2-5739c.appspot.com",
+  messagingSenderId: "575233445279",
+  appId: "1:575233445279:web:8afd0a701fdc719236c1aa"
 };
 
 // Initialize Firebase
