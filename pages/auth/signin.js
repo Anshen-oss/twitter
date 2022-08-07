@@ -1,6 +1,6 @@
 import {getProviders, signIn} from 'next-auth/react'
 
-const siginin = ({ providers }) => {
+const signin = ({ providers }) => {
   console.log(providers)
   return (
     <div className="flex justify-center mt-20 space-x-4">
@@ -44,4 +44,4 @@ export async function getServerSideProps() {
   }
 }
 
-export default siginin;
+export default signin;

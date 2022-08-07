@@ -1,12 +1,20 @@
 import { EmojiHappyIcon, PhotographIcon } from "@heroicons/react/outline";
+import { useSession, signOut } from "next-auth/react"
 
 const Input = () => {
+  const { data: session } = useSession();
+  console.log('session: ', session);
+
   return (
-    <div className="flex border-b border-gray-200 p-3 space-x-3">
+    /* Si la session existe on affiche l'image du user et le champ input */
+    <>
+      {session && (
+       <div className="flex border-b border-gray-200 p-3 space-x-3">
         <picture>
-          <source srcSet="https://pbs.twimg.com/profile_images/1467172481094066185/9wD2Vxgi_400x400.png" type="image/webp" />
+          <source srcSet={session?.user.image} type="image/webp" />
           <img
-            src="https://pbs.twimg.com/profile_images/1467172481094066185/9wD2Vxgi_400x400.png"
+            onClick={signOut}
+            src={session?.user.image}
             alt="user-img"
             className="h-11 w-11 rounded-full cursor-pointer hover:brightness-95"
           />
@@ -26,7 +34,9 @@ const Input = () => {
           </div>
         </div>
     </div>
-  )
+    )}
+    </>
+  );
 }
 
 export default Input;
